@@ -1,5 +1,7 @@
 package org.kuneo.stex.controller;
 
+import org.kuneo.stex.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/")
 public class StexPageController {
   
-  @RequestMapping(value = "/test", method = RequestMethod.GET)
+  @Autowired
+  UserService usersService;
+  
+  @RequestMapping(value = "/index", method = RequestMethod.GET)
   public String test(Model model) {
       model.addAttribute("msg","サンプルメッセージ！");
       return "index";
@@ -19,5 +24,4 @@ public class StexPageController {
   public String login(Model model) {
       return "login";
   }
-
 }
